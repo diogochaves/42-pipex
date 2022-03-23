@@ -6,7 +6,7 @@
 #    By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 00:09:49 by dchaves-          #+#    #+#              #
-#    Updated: 2022/03/23 00:22:16 by dchaves-         ###   ########.fr        #
+#    Updated: 2022/03/23 01:58:30 by dchaves-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,11 @@ VALGRIND	:=	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 # FILES
 NAME		:=	pipex
-HEADER		:=	$(INC_PATH)pipex.h
+HEADER		:=	$(INC_PATH)pipex.h \
+				$(INC_PATH)macros.h
 
-SRC_FILES 	:=	main.c
+SRC_FILES 	:=	main.c \
+				error.c
 
 SOURCES		:=	$(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJ_FILES	:=	$(patsubst %.c, %.o, $(SRC_FILES))
@@ -62,9 +64,9 @@ fclean:			clean
 re:				fclean all
 
 run:
-	./$(NAME)
+	./$(NAME) infile ls wc outfile
 
 val:	
-				$(VALGRIND) ./$(NAME)
+				$(VALGRIND) ./$(NAME) infile ls wc outfile
 
 .PHONY: 		all clean fclean re libft path run val

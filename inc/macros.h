@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 00:36:04 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/03/23 01:16:13 by dchaves-         ###   ########.fr       */
+/*   Created: 2022/03/23 01:14:32 by dchaves-          #+#    #+#             */
+/*   Updated: 2022/03/23 01:54:12 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef MACROS_H
+# define MACROS_H
 
-# include <stdlib.h> // malloc free exit
-# include <unistd.h> // read write close access dup execve fork pipe unlink
-# include <fcntl.h> // open
-# include <stdio.h> // perror
-# include <string.h> // strerror
-# include <sys/wait.h> // wait waitpid
-# include "../lib/libft/inc/libft.h" // libft gnl
-# include "./macros.h"
-
-void	error(int error_code);
+# define ERROR_MALLOC		1
+# define ERROR_OPEN			2
+# define ERROR_ARGC			3
+# define ERROR_FORK			4
 
 #endif
