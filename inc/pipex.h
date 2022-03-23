@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:36:04 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/03/23 01:16:13 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:46:26 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 # include <sys/wait.h> // wait waitpid
 # include "../lib/libft/inc/libft.h" // libft gnl
 # include "./macros.h"
+# include "./structs.h"
 
+void	init(int argc, char **argv, t_pipex *px);
 void	error(int error_code);
+void	free_pipex(t_pipex *px);
 
 #endif

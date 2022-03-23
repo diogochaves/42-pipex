@@ -6,7 +6,7 @@
 #    By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 00:09:49 by dchaves-          #+#    #+#              #
-#    Updated: 2022/03/23 01:58:30 by dchaves-         ###   ########.fr        #
+#    Updated: 2022/03/23 21:22:27 by dchaves-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,15 +24,18 @@ DEBUG		:=	-g
 
 # BASH COMMANDS
 RM 			:=	rm -f
-VALGRIND	:=	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
+VALGRIND	:=	valgrind --leak-check=full --show-leak-kinds=all \
+				--track-origins=yes --trace-children=yes #--track-fds=yes
 
 # FILES
 NAME		:=	pipex
 HEADER		:=	$(INC_PATH)pipex.h \
-				$(INC_PATH)macros.h
+				$(INC_PATH)macros.h \
+				$(INC_PATH)structs.h
 
 SRC_FILES 	:=	main.c \
-				error.c
+				exit.c \
+				init.c
 
 SOURCES		:=	$(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJ_FILES	:=	$(patsubst %.c, %.o, $(SRC_FILES))
@@ -64,9 +67,9 @@ fclean:			clean
 re:				fclean all
 
 run:
-	./$(NAME) infile ls wc outfile
+	./$(NAME) infile "wc -l" wc outfile
 
 val:	
-				$(VALGRIND) ./$(NAME) infile ls wc outfile
+				$(VALGRIND) ./$(NAME) infile "wc -l" wc outfile
 
 .PHONY: 		all clean fclean re libft path run val
