@@ -6,7 +6,7 @@
 #    By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 00:09:49 by dchaves-          #+#    #+#              #
-#    Updated: 2022/03/23 21:22:27 by dchaves-         ###   ########.fr        #
+#    Updated: 2022/03/25 02:02:16 by dchaves-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ HEADER		:=	$(INC_PATH)pipex.h \
 
 SRC_FILES 	:=	main.c \
 				exit.c \
-				init.c
+				init.c \
+				ft_split2.c
 
 SOURCES		:=	$(addprefix $(SRC_PATH), $(SRC_FILES))
 OBJ_FILES	:=	$(patsubst %.c, %.o, $(SRC_FILES))
@@ -49,7 +50,7 @@ $(NAME):		$(OBJECTS)
 
 # -> creates object files inside ./obj/
 $(OBJ_PATH)%.o:	$(SRC_PATH)%.c $(HEADER) | path
-				$(CC) $(CFLAGS) -I $(INC_PATH) -c $< -o $@
+				$(CC) $(CFLAGS) $(DEBUG) -I $(INC_PATH) -c $< -o $@
 
 libft:
 				make -C $(LIB_PATH)libft

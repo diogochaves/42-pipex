@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 20:42:05 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/03/23 21:33:48 by dchaves-         ###   ########.fr       */
+/*   Created: 2022/03/23 22:59:47 by dchaves-          #+#    #+#             */
+/*   Updated: 2022/03/25 11:39:19 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "../inc/pipex.h"
 
@@ -16,16 +18,15 @@ void	init(int argc, char **argv, t_pipex *px)
 {
 	int	i;
 
-	px->cmds = argc - DEFAULT_ARGS;
+	px->cmd_count = argc - DEFAULT_ARGS;
 	if (argc != 5)
 		error(ERROR_ARGC);
-	//px->cmd = malloc(sizeof(char *) * px->cmds);
-	px->cmd_args = malloc(sizeof(char *) * px->cmds);
+	px->cmd = malloc(sizeof(t_cmd *) * px->cmd_count);
 	i = 0;
-	while (i < px->cmds)
+	while (i < px->cmd_count)
 	{
-		px->cmd_args[i] = ft_split(argv[i + 2], ' ');
-		//px->cmd[i] = px->cmd_args[i][0];
+		px->cmd[i] = malloc(sizeof(t_cmd));
+		px->cmd[i]->args = ft_split2(argv[i + 2], ' ');
 		i++;
 	}
 	px->file[READ] = open(argv[1], O_RDONLY | O_CREAT);
