@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:36:04 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/03/25 11:29:31 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/03/25 12:18:20 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "./macros.h"
 # include "./structs.h"
 
-void	init(int argc, char **argv, t_pipex *px);
+void	init(t_pipex *px, int argc, char **argv, char **envp);
 void	error(int error_code);
 void	free_pipex(t_pipex *px);
 

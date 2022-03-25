@@ -6,11 +6,13 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:40:22 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/03/25 11:40:42 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/03/25 15:53:22 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex.h"
+
+// TODO: free stuff on ERROR
 
 void	error(int error_code)
 {
@@ -24,8 +26,12 @@ void	error(int error_code)
 		ft_putstr_fd("\033[31;1m\n   FORK ERROR\033[0m\n\n", 1);
 	if (error_code == ERROR_PIPE)
 		ft_putstr_fd("\033[31;1m\n   PIPE ERROR\033[0m\n\n", 1);
+	if (error_code == ERROR_CMD)
+		ft_putstr_fd("\033[31;1m\n   CMD ERROR\033[0m\n\n", 1);		
 	if (error_code == ERROR_EXEC)
 		ft_putstr_fd("\033[31;1m\n   EXEC ERROR\033[0m\n\n", 1);
+	if (error_code == ERROR_PATH)
+		ft_putstr_fd("\033[31;1m\n   PATH ENV ERROR\033[0m\n\n", 1);		
 	exit(error_code);
 }
 
@@ -41,7 +47,12 @@ void	free_pipex(t_pipex *px)
 		while (px->cmd[i]->args[j])
 			free(px->cmd[i]->args[j++]);
 		free(px->cmd[i]->args);
+		free(px->cmd[i]->path);
 		free(px->cmd[i]);
 	}
 	free(px->cmd);
+	i = -1;
+	while (px->path[++i])
+		free(px->path[i]);
+	free(px->path);
 }
