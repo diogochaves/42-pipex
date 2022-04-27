@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 00:09:49 by dchaves-          #+#    #+#              #
-#    Updated: 2022/03/25 11:46:09 by dchaves-         ###   ########.fr        #
+#    Updated: 2022/03/28 01:31:47 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ HEADER		:=	$(INC_PATH)pipex.h \
 
 SRC_FILES 	:=	main.c \
 				exit.c \
+				files.c \
 				init.c
 
 SOURCES		:=	$(addprefix $(SRC_PATH), $(SRC_FILES))

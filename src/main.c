@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:36:24 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/03/25 15:46:46 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/03/26 21:04:42 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int	main(int argc, char **argv, char **envp)
 	id = fork_check();
 	if (id == 0)
 		exec_cmd(px.cmd[1], px.pipe[READ], px.file[WRITE], px.pipe[WRITE]);
-	close(px.pipe[WRITE]); // && close(pipe[READ]) ?
+	close(px.pipe[WRITE]);
 	wait(0);
 	close(px.file[READ]);
 	close(px.file[WRITE]);
 	free_pipex(&px);
-	return (0);
+	return (px.exit_code);
 }
 
 static int	fork_check(void)

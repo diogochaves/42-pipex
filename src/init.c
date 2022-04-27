@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 22:59:47 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/03/25 15:54:44 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/04/27 21:23:24 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,28 @@ static char	*set_cmd_path(char *cmd, t_pipex *px);
 
 void	init(t_pipex *px, int argc, char **argv, char **envp)
 {
+	px->exit_code = 0;
 	if (argc != 5)
 		error(ERROR_ARGC);
 	init_path(px, envp);
 	init_args(px, argc, argv);
-	px->file[READ] = open(argv[1], O_RDONLY | O_CREAT);
+	if (access(argv[1], F_OK) != 0)
+	{
+		perror(argv[1]);
+		error(ERROR_OPEN);
+	}	
+	px->file[READ] = open(argv[1], O_RDONLY);
 	if (px->file[READ] == -1)
+	{
+		px->exit_code = 1;
 		error(ERROR_OPEN);
-	px->file[WRITE] = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC); // O_APPEND
+	}	
+	px->file[WRITE] = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (px->file[WRITE] == -1)
+	{
+		px->exit_code = -1;
 		error(ERROR_OPEN);
+	}	
 	if (pipe(px->pipe) == -1)
 		error(ERROR_PIPE);
 }
@@ -35,7 +47,6 @@ void	init(t_pipex *px, int argc, char **argv, char **envp)
 static void	init_path(t_pipex *px, char **envp)
 {
 	int	i;
-	(void)px;
 
 	i = -1;
 	while (envp[++i])
