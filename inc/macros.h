@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 01:14:32 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/04/27 21:23:12 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/04/28 17:02:13 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define ERROR_ARGC			3
 # define ERROR_FORK			4
 # define ERROR_PIPE			5
-# define ERROR_CMD			6
+# define ERROR_CMD			127
 # define ERROR_EXEC			7
 # define ERROR_PATH			8
 
@@ -26,5 +26,7 @@
 # define WRITE				1
 
 # define DEFAULT_ARGS		3
+
+# define NOT_ASCII			-42
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 20:40:22 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/03/27 20:51:13 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/04/27 22:09:28 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	error(int error_code)
 	else if (error_code == ERROR_OPEN)
 		ft_putstr_fd("\033[33;1m\n   ERROR OPENING FILE\033[0m\n\n", 1);
 	else if (error_code == ERROR_ARGC)
+	{
 		ft_putstr_fd("\033[33;1m\n   WRONG NUMBER OF ARGUMENTS\033[0m\n\n", 1);
+		exit(0);
+	}
 	else if (error_code == ERROR_FORK)
 		ft_putstr_fd("\033[31;1m\n   FORK ERROR\033[0m\n\n", 1);
 	else if (error_code == ERROR_PIPE)

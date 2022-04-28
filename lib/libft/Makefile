@@ -6,7 +6,7 @@
 #    By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/09 14:31:22 by dchaves-          #+#    #+#              #
-#    Updated: 2022/03/23 00:18:56 by dchaves-         ###   ########.fr        #
+#    Updated: 2022/04/28 19:02:04 by dchaves-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC_FILES 	:=	ft_isalpha.c \
 				ft_bzero.c \
 				ft_memcpy.c \
 				ft_memmove.c \
+				ft_strcpy.c \
 				ft_strlcpy.c \
 				ft_strlcat.c \
 				ft_toupper.c \

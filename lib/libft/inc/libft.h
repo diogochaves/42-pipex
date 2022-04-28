@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:36:55 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/03/23 00:36:56 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/04/28 19:04:16 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,15 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
  * @return A pointer to the memory area DEST.
  */
 void	*ft_memmove(void *dest, const void *src, size_t n);
+
+/**
+ * @brief Copies a null-terminated string to an arbitrary location
+ *
+ * @param dst The pointer to the memory area DST.
+ * @param src The pointer to the memory area SCR.
+ * @return The pointer to the memory area DST.
+ */
+char	*ft_strcpy(char *dest, char *src);
 
 /**
  * @brief Copies up to (SIZE - 1) characters from the NUL-terminated string SRC

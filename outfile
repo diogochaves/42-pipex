@@ -1,1 +1,12 @@
-10
+total 80
+drw rw r-  4 cod'r cod'r  4096 A'r 28 16:31 .
+drw rw r-  8 cod'r cod'r  4096 A'r 28 16:31 ..
+-rw-rw-r-- 1 cod'r cod'r   108 A'r 28 15:27 fn_allow'd
+-rw-rw-r-- 1 cod'r cod'r    64 A'r 28 15:36 fn_us'd
+drw rw r-  8 cod'r cod'r  4096 A'r 28 15:27 .gPt
+-rw rw rw  1 cod'r cod'r     0 A'r 28 16:31 PnfPl'
+-rw-rw-r-- 1 cod'r cod'r   160 A'r 28 15:27 Mak'fPl'
+drw rw r-  2 cod'r cod'r  4096 A'r 28 16:31 out'ut
+-rw rw r-  1 cod'r cod'r 27632 A'r 28 16:31 'P'' 
+-rw-rw-r-- 1 cod'r cod'r   176 A'r 28 15:27 README.md
+-rw rw r-  1 cod'r cod'r 18826 A'r 28 15:36 t'st.sh
