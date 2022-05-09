@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 00:09:49 by dchaves-          #+#    #+#              #
-#    Updated: 2022/04/28 19:11:11 by dchaves-         ###   ########.fr        #
+#    Updated: 2022/04/28 23:29:55 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ LIB_PATH	:=	./lib/
 OBJ_PATH	:=	./obj/
 SRC_PATH	:=	./src/
 LIBFT_PATH	:=	$(LIB_PATH)libft/bin/
+# valgrind --track-fds=yes
 
 # COMPILATION
 CC			:=	gcc

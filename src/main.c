@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:36:24 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/04/27 22:46:20 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/05/09 20:38:59 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,38 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	px;
 	int		id;
+	int		status;
 
 	init(&px, argc, argv, envp);
 	id = fork_check();
 	if (id == 0)
-		exec_cmd(px.cmd[0], px.file[READ], px.pipe[WRITE], px.pipe[READ]);
-	wait(0);
+	{
+		if (access(px.cmd[0]->path, F_OK && X_OK) == 0)
+			exec_cmd(px.cmd[0], px.file[READ], px.pipe[WRITE], px.pipe[READ]);
+		else
+		{
+			free_pipex(&px);
+			exit(127);
+		}
+	}
+	waitpid(id, &status, 0);
 	id = fork_check();
 	if (id == 0)
-		exec_cmd(px.cmd[1], px.pipe[READ], px.file[WRITE], px.pipe[WRITE]);
+	{
+		if (access(px.cmd[1]->path, F_OK && X_OK) == 0)
+			exec_cmd(px.cmd[1], px.pipe[READ], px.file[WRITE], px.pipe[WRITE]);
+		else
+		{
+			free_pipex(&px);
+			exit(127);
+		}	
+	}
 	close(px.pipe[WRITE]);
-	wait(0);
+	waitpid(id, &status, 0);
 	close(px.file[READ]);
 	close(px.file[WRITE]);
 	free_pipex(&px);
-	return (px.exit_code);
+	return (WEXITSTATUS(status));
 }
 
 static int	fork_check(void)
@@ -48,9 +65,9 @@ static int	fork_check(void)
 
 static void	exec_cmd(t_cmd *cmd, int fd_in, int fd_out, int fd_close)
 {
+	close(fd_close);
 	dup2(fd_in, STDIN_FILENO);
 	dup2(fd_out, STDOUT_FILENO);
-	close(fd_close);
 	if (execve(cmd->path, cmd->args, NULL) == -1)
 		error(ERROR_EXEC);
 }
