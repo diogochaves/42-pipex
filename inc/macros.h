@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 01:14:32 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/04/28 17:02:13 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/05/09 23:29:49 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define WRITE				1
 
 # define DEFAULT_ARGS		3
+
+# define CHILD_PROCESS		0
 
 # define NOT_ASCII			-42
 
