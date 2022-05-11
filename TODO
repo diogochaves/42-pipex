@@ -1,1 +1,0 @@
-- deal with input: empty quotes, instead of program name (segfault)

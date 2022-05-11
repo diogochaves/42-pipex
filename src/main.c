@@ -6,7 +6,7 @@
 /*   By: dchaves- <dchaves-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:36:24 by dchaves-          #+#    #+#             */
-/*   Updated: 2022/05/10 20:11:41 by dchaves-         ###   ########.fr       */
+/*   Updated: 2022/05/11 15:15:10 by dchaves-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	pipex(t_pipex *px)
 		if (access(px->cmd[0]->path, F_OK && X_OK) == 0 && px->file[READ] != -1)
 			exec_cmd(px->cmd[0], px->file[0], px->pipe[WRITE], px->pipe[READ]);
 		free_pipex(px);
-		exit(127);
+		error(ERROR_CMD);
 	}
 	id = fork_check();
 	if (id == CHILD_PROCESS)
@@ -46,7 +46,7 @@ static void	pipex(t_pipex *px)
 		if (access(px->cmd[1]->path, F_OK && X_OK) == 0)
 			exec_cmd(px->cmd[1], px->pipe[0], px->file[WRITE], px->pipe[WRITE]);
 		free_pipex(px);
-		exit(127);
+		error(ERROR_CMD);
 	}
 	close(px->pipe[WRITE]);
 	waitpid(id, &status, 0);
